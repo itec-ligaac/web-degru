@@ -1,9 +1,9 @@
 from flask import Flask,render_template, send_from_directory
 app = Flask(__name__)
 
-# ######################
+# ======================
 # routes and other stuff
-# ######################
+# ======================
 
 @app.route('/login')
 def hello_world():
@@ -17,5 +17,10 @@ def signup_serve():
 def send_js(path):
     return send_from_directory('statics', path)
 
+# ======================
+# rendering the templates
+# ======================
+
+@app.route("")
 
 app.run(host = "0.0.0.0", port=8000, debug=True)
