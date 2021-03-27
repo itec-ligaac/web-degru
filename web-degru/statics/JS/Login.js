@@ -7,11 +7,14 @@
 
 // Toggles between show password in input or hiding it
 
+var UsernameInput = document.getElementById("InputUsername");
+var PasswordInput = document.getElementById("InputPassword");
+
+var PasswordIcon = document.getElementById("PasswordIcon");
+
 /*
 var PasswordShow = false;
 
-var PasswordInput = document.getElementById("InputPassword");
-var PasswordIcon = document.getElementById("PasswordIcon");
 
 PasswordIcon.onclick = function()
 {
@@ -35,3 +38,28 @@ PasswordIcon.onclick = function()
     }
 };
 */
+
+var RememberMe = document.getElementById("RememberMe");
+
+function CreateCookie()
+{
+    if(RememberMe.checked == true)
+    {
+        Username = UsernameInput.value;
+        Password = PasswordInput.value;
+
+        document.cookie = "Username="
+    }
+
+    // document.cookie = "name="+username.value+";path=/" + ";expires="+expire.toUTCString();
+    // document.cookie = "password="+encodeURI(pwd.value)+";path=/" + ";expires="+expire.toUTCString();
+}  
+  
+  
+
+window.onload = function()
+{
+    //how to read back the stored name and password?
+    //https://stackoverflow.com/q/10730362/6160662
+    //https://stackoverflow.com/q/5639346/6160662
+}
