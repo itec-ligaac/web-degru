@@ -16,7 +16,7 @@
     <meta http-equiv = "Cache-Control" content = "cache"> 
 
     <!-- Page Title and Favicon -->
-    <title>!! NAME !!</title>
+    <title>DeGru - Login</title>
     <link rel = "icon" type = "image/png" href = "../statics/Images/Logo.png">
 
     <!-- JQuerry-->
@@ -64,8 +64,12 @@
 
                         <div class = "row FormRow" id = "FormLoginButton">
                             <div>
-                                <button class = "ButtonRoundedBig AnimationIncrease0" id = "LoginButton" type = "submit">Login</button>
+                                <button class = "ButtonRoundedBig AnimationIncrease0" id = "LoginButton" type = "submit" onclick = "CreateCookie();">Login</button>
                             </div>
+                        </div>
+
+                        <div class = "Row FormRow" id = "FormRememberMe">
+                            <p class = "TextMedium">Remember me <input id = "RememberMe" type = "checkbox"></p>
                         </div>
                     </form>
 
