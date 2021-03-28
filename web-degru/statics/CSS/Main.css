@@ -87,7 +87,7 @@
     --BackgroundLightPrimary: #ffffff;
     --BackgroundLightSecondary: #cccccc;
 
-    --AccentPrimary: #0084ff;  
+    --AccentPrimary: #2375fa;  
     --AccentSecondary: #000000;
 
     --TextPrimary: #121212;
@@ -166,6 +166,16 @@ i
 .BackgroundLightPrimary
 {
     background-color: var(--BackgroundLightPrimary);
+}
+
+.BackgroundLightSecondary
+{
+    background-color: var(--BackgroundLightSecondary);
+}
+
+.BackgroundAccentPrimary
+{
+    background-color: var(--AccentPrimary);
 }
 
 .BackgroundGradientPrimary
@@ -346,7 +356,7 @@ i
 {
   .AnimationUnderline
   {
-    background-image: linear-gradient(var(--TextPrimary), var(--TextPrimary));
+    background-image: linear-gradient(var(--TextSecondary), var(--TextSecondary));
     background-position: 0% 77.5%;
     background-position-y: 35px;
     background-repeat: no-repeat;
@@ -357,7 +367,7 @@ i
   .AnimationUnderline:hover 
   {
     background-size: 100% 2px;
-    color: var(--TextPrimary);
+    color: var(--TextSecondary);
   }
 }
 
@@ -482,7 +492,7 @@ i
 
 #PhoneMenuIcon
 {
-    color: var(--TextPrimary);
+    color: var(--TextSecondary);
     font-size: var(--FontSizeIconMedium);
 }
 
@@ -493,17 +503,10 @@ i
 
 .nav-link
 {
-    color: var(--TextPrimary);
+    color: var(--TextSecondary);
     font-size: var(--FontSizeMenuItem);
     font-weight: var(--FontWeightMenuItem); 
     display: block;  
-}
-    
-.ActiveLink
-{
-    background: -webkit-linear-gradient(bottom right, rgb(223, 145, 253), rgb(119, 161, 252));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 #ProfileLink
@@ -513,6 +516,7 @@ i
     font-weight: var(--FontWeightMenuItem);  
     margin-top: 5px;
     margin-right: 10px;
+    color: var(--TextSecondary);
 }
 
 #PhoneIcon

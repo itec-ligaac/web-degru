@@ -16,8 +16,8 @@
     <meta http-equiv = "Cache-Control" content = "cache"> 
 
     <!-- Page Title and Favicon -->
-    <title>!! NAME !!</title>
-    <link rel = "icon" type = "image/png" href = "../statics/Images/Logo.svg">
+    <title>DeGru - Sign up</title>
+    <link rel = "icon" type = "image/png" href = "../statics/Images/Logo.png">
 
     <!-- JQuerry-->
     <script src = "../statics/ThirdParty/JQuery/Jquery.min.js"></script>
@@ -51,7 +51,7 @@
 
                 <!-- SignUp Form -->
                 <div class = "row SignUpRow text-center" id = "FormRow">
-                    <form action = "/SignUp" method = "POST" id = "Form">                    
+                    <form action = "/verify-signup" method = "POST" id = "Form">                    
                         <div class = "row FormRow" id = "FormUsername">
                             <label class = "FormLabel TextMedium" id = "LabelUsername">Username <i class = "fas fa-user"></i></label>
                             <input class = "FormInput TextSmall" id = "InputUsername" type = "text" name = "Username" required>
@@ -66,11 +66,19 @@
                             <label class = "FormLabel TextMedium" id = "LabelPassword">Confirm Password <i class = "fas fa-lock AnimationIncrease1" id = "ConfirmPasswordIcon"></i></label>
                             <input class = "FormInput TextSmall" id = "InputPassword" type = "password" name = "ConfirmPassword" required>
                         </div>
+                        
+                        {% if error %}
+                            <h1 class = "TextBig" style = "color: red;">{{ error }}</h1>
+                        {% endif %}
 
                         <div class = "row FormRow" id = "FormSignUpButton">
                             <div>
-                                <button class = "ButtonRoundedBig AnimationIncrease0" id = "SignUpButton" type = "submit">Sign up</button>
+                                <button class = "ButtonRoundedBig AnimationIncrease0" id = "SignUpButton" type = "submit" onclick = "CreateCookie();">Sign up</button>
                             </div>
+                        </div>
+
+                        <div class = "Row FormRow" id = "FormRememberMe">
+                            <p class = "TextMedium">Remember me <input id = "RememberMe" type = "checkbox"></p>
                         </div>
                     </form>
 

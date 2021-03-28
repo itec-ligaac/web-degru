@@ -75,3 +75,21 @@
     color: var(--AccentPrimary);
     border: none;
 }
+
+#FormRememberMe
+{
+    margin-left: -20px;
+    margin-top: 2.5vh;
+}
+
+#RememberMe
+{
+    -ms-transform: scale(1.5); 
+    -moz-transform: scale(1.5); 
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    margin-top: 11px;
+    margin-left: 10px;
+    position: absolute;
+}

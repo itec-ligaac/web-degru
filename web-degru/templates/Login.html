@@ -51,7 +51,7 @@
 
                 <!-- Login Form -->
                 <div class = "row LoginRow text-center" id = "FormRow">
-                    <form action = "/login" method = "POST" id = "Form">                    
+                    <form action = "/verify-login" method = "POST" id = "Form">                    
                         <div class = "row FormRow" id = "FormUsername">
                             <label class = "FormLabel TextMedium" id = "LabelUsername">Username <i class = "fas fa-user"></i></label>
                             <input class = "FormInput TextSmall" id = "InputUsername" type = "text" name = "Username" required>
@@ -61,6 +61,10 @@
                             <label class = "FormLabel TextMedium" id = "LabelPassword">Password <i class = "fas fa-lock AnimationIncrease1" id = "PasswordIcon"></i></label>
                             <input class = "FormInput TextSmall" id = "InputPassword" type = "password" name = "Password" data-toggle = "tooltip" data-placement = "right" title = "This is the text of the tooltip" required>
                         </div>
+
+                        {% if error %}
+                            <h1 class = "TextBig" style = "color: red;">{{ error }}</h1>
+                        {% endif %}
 
                         <div class = "row FormRow" id = "FormLoginButton">
                             <div>
@@ -75,7 +79,7 @@
 
                     <div class = "row FormRow" id = "FormLoginSwitchButton">
                         <div>
-                            <a class = "CustomLink" id = "LoginSwitchButton" href = "SignUp.html" >Don't have an account? Sign up</a>
+                            <a class = "CustomLink" id = "LoginSwitchButton" href = "signup" >Don't have an account? Sign up</a>
                         </div>
                     </div>
                 </div>

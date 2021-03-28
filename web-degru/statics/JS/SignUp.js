@@ -7,6 +7,12 @@
 
 // Toggles between show password in input or hiding it (for password or confirm password)
 
+var UsernameInput = document.getElementById("InputUsername");
+var PasswordInput = document.getElementById("InputPassword");
+
+var PasswordIcon = document.getElementById("PasswordIcon");
+
+
 /*
 var PasswordShow = false;
 var ConfirmPasswordShow = false;
@@ -59,3 +65,17 @@ function TogggleShowPassword(WichInput)
     }
 }
 */
+
+var RememberMe = document.getElementById("RememberMe");
+
+function CreateCookie()
+{
+    if(RememberMe.checked == true)
+    {
+        document.cookie = "RememberMe=true;expires=Sat, 10 Apr 2021 12:00:00 UTC";
+    }
+    else
+    {
+        document.cookie = "RememberMe=false;expires=Sat, 10 Apr 2021 12:00:00 UTC";
+    }
+} 

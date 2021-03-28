@@ -45,21 +45,10 @@ function CreateCookie()
 {
     if(RememberMe.checked == true)
     {
-        Username = UsernameInput.value;
-        Password = PasswordInput.value;
-
-        document.cookie = "Username="
+        document.cookie = "RememberMe=true;expires=Sat, 10 Apr 2021 12:00:00 UTC";
     }
-
-    // document.cookie = "name="+username.value+";path=/" + ";expires="+expire.toUTCString();
-    // document.cookie = "password="+encodeURI(pwd.value)+";path=/" + ";expires="+expire.toUTCString();
-}  
-  
-  
-
-window.onload = function()
-{
-    //how to read back the stored name and password?
-    //https://stackoverflow.com/q/10730362/6160662
-    //https://stackoverflow.com/q/5639346/6160662
-}
+    else
+    {
+        document.cookie = "RememberMe=false;expires=Sat, 10 Apr 2021 12:00:00 UTC";
+    }
+} 
