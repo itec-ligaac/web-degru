@@ -99,7 +99,7 @@ def searchsave():
     indataa = request.json
     session = indataa["SessionId"]
     idd = indataa["ID"]
-    mycursor.execute("UPDATE login SET saved = %s WHERE session = %s", (idd, session)))
+    mycursor.execute("UPDATE login SET saved = %s WHERE session = %s", (idd, session))
     mydb.commit()
 
 
