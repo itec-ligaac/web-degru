@@ -94,6 +94,29 @@ def signup():
     else:
             return render_template("SignUp.html", error="User already exists")
 
+@app.route("/search-save", methods = ["POST"])
+def searchsave():
+    indataa = request.json
+    session = indataa["SessionId"]
+    idd = indataa["ID"]
+    mycursor.execute("UPDATE login SET saved = %s WHERE session = %s", (idd, session)))
+    mydb.commit()
+
+
+@app.route("/saved", methods = ["POST"])
+def servesave():
+    indataaa = request.json
+    session = indataaa["SessionId"]
+    mycursor.execute("SELECT saved FROM login WHERE session = %s", (session, ))
+    result = mycursor.fetchall()
+
+    print(postid)
+    postid = result[0]
+
+    mycursor.execute("SELECT * FROM places WHERE id = %s", (postid, ))
+    resultt = mycursor.fetchall()
+
+    return jsonify(resultt)
 
 @app.route("/search-data", methods = ["POST"])
 def searchdata():
@@ -137,6 +160,7 @@ def searchdata():
     for i in res[0]:
         urll = imageSearch(i["name"])
         weather = GetWeather(i["lat"], i["lon"])
+        abc = get_random_string(10)
         ress.append({
             "name": i["name"],
             "lat": i["lat"],
@@ -144,8 +168,10 @@ def searchdata():
             "covid": i["covid"],
             "image_url": urll,
             "weather": str(weather),
-            "loc_id": get_random_string(10)
+            "loc_id": abc
         })
+        mycursor.execute("INSERT INTO places (id, name, photo_loc, covid_rate, weather) VALUES (%s, %s, %s, %s, %s)", (abc, i["name"], urll, i["covid"], str(weather)))
+        mydb.commit()
 
     return jsonify(ress)
 

@@ -20,17 +20,25 @@ function SendSearch()
                 if (xhr.status == 200)
                 {
                     var Response = JSON.parse(xhr.response);
-                    debugger;
+
                     for(var i = 0; i < Response.length; i++)
                     {
-                        console.log(i)
                         var Id = Response[i]["lock_id"];
                         var Name = Response[i]["name"];
                         var Photo = Response[i]["image_url"];
                         var CovidRisk = Response[i]["covid"];
                         var Weather = Response[i]["weather"];
-        
-                        RenderResult(Id, Name, Photo, CovidRisk, Weather);
+                        var lat = Response[i]["lat"];
+                        var long = Response[i]["lon"];
+                        
+                        if(i % 2 == 0)
+                        {
+                            RenderResult(Id, Name, Photo, CovidRisk, Weather, "right", lat, long);
+                        }
+                        else 
+                        {
+                            RenderResult(Id, Name, Photo, CovidRisk, Weather, "left", lat, long);
+                        }
                     }
                 }
             }
@@ -51,7 +59,7 @@ function SendSearch()
     }   
 }
 
-function RenderResult(Id, Name, Photo, CovidRisk, Weather)
+function RenderResult(Id, Name, Photo, CovidRisk, Weather, Orientation, lat, long)
 {
     /* 
         <div class = "ResultPost">
@@ -73,7 +81,17 @@ function RenderResult(Id, Name, Photo, CovidRisk, Weather)
     */
     
     Post = document.createElement("div"); 
-    PostString = '<div class = "ResultPost"><div class = "BackgroundImage ResultImage ResultImageRight" style = "background-image: url(' + Photo + ');"></div><div class = "ResultTextContainer ResultTextRight BackgroundAccentPrimary text-center"><h1 class = "SubTitle ResultTitle" id = "ResultElement">' + Name + '</h1><p class = "ResultText TextMedium">Covid Safeness: ' + CovidRisk + '</p><p class = "ResultText TextMedium">Weather: ' + Weather + ' Degrees</p><p class = "ResultText TextMedium" id = "' + Id + '" onclick = "SaveResult(\'' + Id + '\');">Save Result <i class = "far fa-star" id = "SaveIcon"></i></p><div class = "AnimationIncrease0"><a class = "ButtonTransparentMedium ResultReadMore" href = "PlanTrip.html">Plan trip <i class = "fas fa-angle-right ReadMoreIcon"></i></a>';
+    MapsLink = "https://www.google.ro/maps/@" + String(lat) + "," + String(long) + ",17z";
+
+    if(Orientation == "right")
+    {
+        PostString = '<div class = "ResultPost"><div class = "BackgroundImage ResultImage ResultImageRight" style = "background-image: url(' + Photo + ');"></div><div class = "ResultTextContainer ResultTextRight BackgroundAccentPrimary text-center"><h1 class = "SubTitle ResultTitle" id = "ResultElement">' + Name + '</h1><p class = "ResultText TextMedium">Covid Safeness: ' + CovidRisk + '</p><p class = "ResultText TextMedium">Weather: ' + Weather + ' Degrees</p><p class = "ResultText TextMedium" id = "' + Id + '" onclick = "SaveResult(\'' + Id + '\');">Save Result <i class = "far fa-star" id = "SaveIcon"></i></p><div class = "AnimationIncrease0"><a class = "ButtonTransparentMedium ResultReadMore" href = "' + MapsLink + '">Plan trip <i class = "fas fa-angle-right ReadMoreIcon"></i></a>';
+    }
+    else 
+    {
+        PostString = '<div class = "ResultPost"><div class = "BackgroundImage ResultImage ResultImageLeft" style = "background-image: url(' + Photo + ');"></div><div class = "ResultTextContainer ResultTextLeft BackgroundAccentPrimary text-center"><h1 class = "SubTitle ResultTitle" id = "ResultElement">' + Name + '</h1><p class = "ResultText TextMedium">Covid Safeness: ' + CovidRisk + '</p><p class = "ResultText TextMedium">Weather: ' + Weather + ' Degrees</p><p class = "ResultText TextMedium" id = "' + Id + '" onclick = "SaveResult(\'' + Id + '\');">Save Result <i class = "far fa-star" id = "SaveIcon"></i></p><div class = "AnimationIncrease0"><a class = "ButtonTransparentMedium ResultReadMore" href = "' + MapsLink + '">Plan trip <i class = "fas fa-angle-right ReadMoreIcon"></i></a>';
+    }
+
     Post.innerHTML = PostString;
     document.getElementById("SearchResultRow").appendChild(Post);
 }
